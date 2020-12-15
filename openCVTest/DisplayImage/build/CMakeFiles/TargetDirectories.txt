@@ -1,3 +1,0 @@
-/home/tipparn/Documents/Programmering/Cpp/openCVTest/DisplayImage/build/CMakeFiles/rebuild_cache.dir
-/home/tipparn/Documents/Programmering/Cpp/openCVTest/DisplayImage/build/CMakeFiles/edit_cache.dir
-/home/tipparn/Documents/Programmering/Cpp/openCVTest/DisplayImage/build/CMakeFiles/DisplayImage.dir
