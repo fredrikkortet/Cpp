@@ -1,2 +1,2 @@
-#setup
-    *SFML
+# setup
+ * SFML
