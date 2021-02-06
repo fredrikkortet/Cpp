@@ -9,24 +9,34 @@ int main()
     ContextSettings settings;
     settings.antialiasingLevel=8;
     //create a window
-    RenderWindow window(VideoMode(200, 200), "SFML works!", Style::Default, settings);
+    RenderWindow window(VideoMode(1000, 1000), "SFML works!", Style::Default, settings);
 
     //make a shape circle
     CircleShape shape(50.f);
-    RectangleShape rec(Vector2f(40.f, 30.f));
+    RectangleShape rec(Vector2f(1000.f, 1000.f));
     //odd shapes 
     ConvexShape oddshape;
     Text windowtext;
     Font font;
+    Texture texture;
     Vertex line[] =
     {
         Vertex(Vector2f(50.f, 50.f)),
-        Vertex(Vector2f(150.f,150.f))
+        Vertex(Vector2f(50.f,950.f)),
+        Vertex(Vector2f(60.f, 50.f)),
+        Vertex(Vector2f(60.f,950.f))
     };
+    //check if the font was found
     if(!font.loadFromFile("Roboto-Regular.ttf"))
     {
         std::cerr << "the font not found!";
     }
+    //check if the texture was found
+    if(!texture.loadFromFile("/home/tipparn/Pictures/textures/Oak02.jpg"))
+    {
+        std::cerr << "the texture not found!";
+    }
+    
     //settings to shapes
         //resize it to x points 
             oddshape.setPointCount(6);
@@ -39,15 +49,19 @@ int main()
             oddshape.setPoint(5, Vector2f(0.f, 50.f));
     
     //set a position to entity
-        shape.setPosition(20.f, 20.f);
-        rec.setPosition(60.f,100.f);
-    
+        shape.setPosition(50.f, 50.f);
+        rec.setPosition(0.f,0.f);
+
     //set sides on the circle 
         shape.setPointCount(100);
     //rotate the entity
-        rec.setRotation(20.f);
-
-
+        //rec.setRotation(20.f);
+        shape.setRotation(45);
+    //set the texture 
+        texture.setSmooth(true);
+        rec.setTexture(&texture);
+        
+        
     //set the color
         shape.setFillColor(Color::Green);
         rec.setFillColor(Color(204,21,14));
@@ -57,12 +71,11 @@ int main()
         shape.setOutlineColor(Color(0,0,0));
     //settings for text
     
-    windowtext.setFont(font);
-    windowtext.setString("This is text that show you the text");
-    windowtext.setCharacterSize(24);
-    windowtext.setFillColor(Color::Magenta);
-    windowtext.setStyle(Text::Bold);
-
+        windowtext.setFont(font);
+        windowtext.setString("This is text that show you the text");
+        windowtext.setCharacterSize(24);
+        windowtext.setFillColor(Color::Magenta);
+        windowtext.setStyle(Text::Bold);
 
     //get the position and print them out
         Vector2f position = shape.getPosition();
@@ -88,10 +101,10 @@ int main()
         //clear the window 
         window.clear(Color::White);
         // draw the shape
+            window.draw(rec);
             window.draw(oddshape);
             window.draw(shape);
-            window.draw(rec);
-            window.draw(line, 2 , Lines);
+            window.draw(line, 4 , Lines);
             window.draw(windowtext);
         //end current frame 
         window.display();
