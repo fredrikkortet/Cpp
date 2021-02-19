@@ -21,7 +21,7 @@ int main()
     Texture texture;
     Vertex line[size*2];
     Vertex hline[size*2];
-
+    
     for(int i=0;i<size;i++)
     {
         float temp = min+(900.f/(size-1.f)*i);
